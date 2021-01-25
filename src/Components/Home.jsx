@@ -7,12 +7,12 @@ import Row from "react-bootstrap/Row"
 function Home(){
     return(
         <>
-            <Container>
+            <Container fluid="true">
                 <Row>
-                <Col lg="8"><Blogs /></Col>
-                <Col>
-                    <CreateBlog />
-                </Col>
+                    <Col xs={12} md={8} sm={12}><br></br><Blogs/></Col>
+                    <Col xs={12} md={4} sm={12}>
+                        <CreateBlog/>
+                    </Col>
                 </Row>
             </Container>
         </>
