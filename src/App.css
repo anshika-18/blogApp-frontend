@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+ 
+background-image: url("https://images.homedepot-static.com/productImages/f9ce014d-e716-45af-b4cd-2b604ea4d71d/svn/gray-green-ivy-hill-tile-ceramic-tile-ext3rd101916-64_400_compressed.jpg");
+background-repeat: repeat-y;
+background-size: cover;
+min-height: 100vh;
 }
 
 .App-logo {

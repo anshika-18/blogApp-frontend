@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from "react"
-
+import "./css/blogs.css"
 import Card from "react-bootstrap/Card"
 import axios from 'axios'
 import Button from "react-bootstrap/Button"
@@ -8,6 +8,7 @@ import Container from "react-bootstrap/Container"
 import relativeTime from "dayjs/plugin/relativeTime"
 import dayjs from 'dayjs'
 import Row from "react-bootstrap/Row"
+import CardColumns from "react-bootstrap/CardColumns"
 function Blogs(){
     const[blogs,setBlogs]=useState([]);
     useEffect(()=>{
@@ -31,16 +32,17 @@ function Blogs(){
         dataFetch();
     },[])
     dayjs.extend(relativeTime);
+
     return(
         <> 
         <Container>
-        <Row lg={2}>
+        <Row >
 
         {blogs ? (
-            <>  <br></br>
+            <div className="mapping">  
                 {blogs.map((blog) => (
                     <>
-                    <Card className="text-center">
+                    <Card className="text-center Card">
                         <Card.Header>Featured</Card.Header>
                         <Card.Body>
                             <Card.Title>{blog.title}</Card.Title>
@@ -57,7 +59,7 @@ function Blogs(){
                 ))
 
                 }
-            </>
+            </div>
         ) : (
             <></>
         )
