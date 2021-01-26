@@ -1,9 +1,17 @@
 .mapping
 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr ;
     width: 100%;
     padding: 1rem;
+}
+@media screen and ( min-width:800px)
+{
+    .mapping
+    {
+        grid-template-columns: 1fr 1fr;
+    }
+    
 }
 .Card
 {
@@ -12,9 +20,10 @@
 .form-background
 {
     background-image: url("https://image.freepik.com/free-photo/flat-lay-working-woman-pink-desk_23-2148404505.jpg");
+    padding:2rem;
 }
 .label
 {
     font-weight: 800;
-    color:blue
+    color:blue;
 }

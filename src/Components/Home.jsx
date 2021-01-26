@@ -10,7 +10,7 @@ function Home(){
         <div className="home-outer">
             <Container fluid>
                 <Row>
-                    <Col  lg={8} ><Blogs/></Col>
+                    <Col  lg={8} ><Blogs count={4}/></Col>
                     <Col  lg={4} ><CreateBlog/></Col>
                 </Row>
             </Container>
