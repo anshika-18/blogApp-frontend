@@ -1,0 +1,25 @@
+img
+{
+    width: 70%;
+    height: 70%;
+    margin-top: 30%;
+}
+
+
+
+.create-outer
+{
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+@media screen and (max-width:1000px)
+{
+    img{
+        display: none;
+    }
+    .create-outer
+    {
+        grid-template-columns: 100%;
+    }
+}

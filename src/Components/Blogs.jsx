@@ -14,15 +14,12 @@ function Blogs(props){
     useEffect(()=>{
         const dataFetch=async()=>{
             try{
-                const headers={
-                    "Access-Control-Allow-Origin":"*"
-                }
-                const res=await axios.get(`${config.BASE}/blogs`,headers)
+                
+                const res=await axios.get(`${config.BASE}/blogs`)
             console.log(res.data);
             if(res.data)
             {
-                setBlogs(res.data.slice(0,props.count))
-                
+                setBlogs(res.data.slice(0,props.count))   
             }
             }
             catch(error){
@@ -59,7 +56,15 @@ function Blogs(props){
                 }
             </div>
         ) : (
-            <><h1>LOading</h1></>
+            <><div className="container loader">
+                    <span>L</span>
+                    <span>O</span>
+                    <span>A</span>
+                    <span>D</span>
+                    <span>I</span>
+                    <span>N</span>
+                    <span>G</span>
+                 </div></>
         )
         }
         </Row>

@@ -5,6 +5,8 @@ import Modal from "react-bootstrap/Modal"
 import axios from "axios"
 import "./css/blogs.css"
 import config from '../config.json'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Tooltip from 'react-bootstrap/Tooltip'
 function CreateBlog (){
 
     const [blogPost,setBlog]=useState({
@@ -66,19 +68,21 @@ function CreateBlog (){
             <Form className="form-background"> 
             <Form.Group controlId="">
                 <Form.Label className="label">Title</Form.Label>
-                    <Form.Control type="text" name="title" value={blogPost.title} onChange={handleChange} placeholder="" />
+                    <Form.Control type="text" name="title" value={blogPost.title} onChange={handleChange} placeholder="Title of blog" />
                 </Form.Group>
             <Form.Group controlId="">
                 <Form.Label className="label">Author</Form.Label>
-                <Form.Control type="text" placeholder="" name="author" value={blogPost.author} onChange={handleChange} />
+                <Form.Control type="text" placeholder="author of blog" name="author" value={blogPost.author} onChange={handleChange} />
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlTextarea1">
                 <Form.Label className="label">Description</Form.Label>
-                <Form.Control as="textarea" rows={4} name="desc" value={blogPost.desc} onChange={handleChange}/>
+                <Form.Control as="textarea" rows={4} name="desc" value={blogPost.desc} onChange={handleChange} placeholder="write your blog......"/>
             </Form.Group>
             
             <Modal.Footer>
+            <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Click to create a blog!</Tooltip>}>
             <Button variant="primary" onClick={onSubmit}>Create </Button>
+            </OverlayTrigger>
             </Modal.Footer>
         </Form>
         </Modal.Dialog> 
