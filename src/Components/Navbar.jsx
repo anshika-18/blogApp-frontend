@@ -14,12 +14,13 @@ import Tooltip from 'react-bootstrap/Tooltip'
 function NavBar(){
     return(
       <Navbar bg="dark" variant="dark" expand="lg" sticky="top">  
-    <Link to="/" className="Link">BlogApp</Link>
+    <Link to="/" className="Link"><h2>BlogApp</h2></Link>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="mr-auto">
       <Nav.Link><Link to="/allblogs" className="Link">All Blogs</Link></Nav.Link>
       <Nav.Link><Link to="/create" className="Link">Create a Blog</Link></Nav.Link>
+      <Nav.Link><Link to="/create" className="Link">Update</Link></Nav.Link>
     </Nav>
     <DropdownButton id="dropdown-basic-button" title="Filter By">
   <Dropdown.Item href="#/action-1">Author</Dropdown.Item>

@@ -1,4 +1,4 @@
-import React,{useState} from "react"
+import react,{useState,useEffect} from "react"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import Modal from "react-bootstrap/Modal"
@@ -7,16 +7,21 @@ import "./css/blogs.css"
 import config from '../config.json'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
+import Spinner from 'react-bootstrap/Spinner'
 function CreateBlog (){
-
+    const [isLoading, setLoading] = useState(false);
     const [blogPost,setBlog]=useState({
         title:"",
         author:"",
         desc:""
     });
 
+    useEffect(() => {
+       
+    }, [isLoading]);
+  
+    
     const handleChange=(e)=>{
-        //console.log(e)
         setBlog({
             ...blogPost,
             [e.target.name]: e.target.value
@@ -26,6 +31,7 @@ function CreateBlog (){
     const postBlog=async()=>{
         try
         {
+            setLoading(true);
             const res=await axios.post(`${config.BASE}/create`,blogPost)
             console.log(res.data)
             setBlog(res.data)
@@ -38,6 +44,8 @@ function CreateBlog (){
         }
     }
 
+    
+   
     const onSubmit=(e)=>{
         if(blogPost.title.trim()==="")
         {
@@ -81,7 +89,16 @@ function CreateBlog (){
             
             <Modal.Footer>
             <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Click to create a blog!</Tooltip>}>
-            <Button variant="primary" onClick={onSubmit}>Create </Button>
+            <Button variant="primary" onClick={onSubmit}> 
+            {isLoading ?<div> <Spinner
+      as="span"
+      animation="border"
+      size="sm"
+      role="status"
+      aria-hidden="true"
+    /> Loading…</div> 
+    : 'Create'}
+    </Button>
             </OverlayTrigger>
             </Modal.Footer>
         </Form>

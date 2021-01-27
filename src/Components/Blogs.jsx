@@ -2,7 +2,7 @@ import React,{useEffect,useState} from "react"
 import "./css/blogs.css"
 import Card from "react-bootstrap/Card"
 import axios from 'axios'
-//import Button from "react-bootstrap/Button"
+import Button from "react-bootstrap/Button"
 import Container from "react-bootstrap/Container"
 //import Col from "react-bootstrap/Col"
 import relativeTime from "dayjs/plugin/relativeTime"
@@ -11,6 +11,8 @@ import Row from "react-bootstrap/Row"
 import config from '../config.json'
 function Blogs(props){
     const[blogs,setBlogs]=useState();
+    const[more,setMore]=useState(false);
+    
     useEffect(()=>{
         const dataFetch=async()=>{
             try{
@@ -29,6 +31,9 @@ function Blogs(props){
         }
         dataFetch();
     },[])
+    const handleContent=()=>{
+        setMore(!more);
+    }
     dayjs.extend(relativeTime);
 
     return(
@@ -45,10 +50,13 @@ function Blogs(props){
                         <Card.Body>
                             <Card.Text>
                                 <b>By: {blog.author}</b><br></br>
-                                {blog.desc.substring(0,250)+"..."}
+                                { more ? blog.desc : blog.desc.substring(0,250)+"..."}
                             </Card.Text>
+                            <Button variant="primary" onClick={()=>handleContent()}>{more ? "show less" :"Read more"}</Button>
                         </Card.Body>
+                        
                         <Card.Footer className="text-muted">Last updated {dayjs(`${blog.updatedAt}`).fromNow()}</Card.Footer>
+                        
                     </Card>
                     </>
                 ))
